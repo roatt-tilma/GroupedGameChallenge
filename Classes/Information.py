@@ -20,7 +20,62 @@ class Question:
         print(self.question, "\n")
         random.shuffle(self.options)
         key_options = {chr(ord("a")+i):self.options[i] for i in range(len(self.options))}
-        [print(key + ")", value) for key,value in key_options.items()]
+        [print(key + ") ", value) for key,value in key_options.items()]
         answer = key_options[input().lower()]
         return answer
+    
+    def check_answer(self, answer):
+        if answer == self.right_answer:
+            return True
+        return False
+    
+class Admin:    
+    def add_questions(self, f):
+            question = input("Enter the question.\n")
+            options = input("Enter the options separated by '||' in single line\n")
+            right_answer = input("Enter the right answer\n")
+            f.write(question + "\n")
+            f.write(options + "\n")
+            f.write(right_answer + "\n")
+    
+    def __getAllQuestions(self, filename):
+        file_location = ".\\Questions\\" + filename
+        f = open(file_location, "r")
+        li = [i for i in f.read().split("**||**") if i]
+        li.pop()
+        f.close()
+        return li
+    
+    def __build_question_objects(self, li):
+        return_list = []
+        for el in li:
+            question_att = [i for i in el.splitlines() if i]
+            quest = question_att[0]
+            options = question_att[1].split("||")
+            right_answer = question_att[2]
+            diff_lvl, base_points = tuple(map(int, question_att[3].split()))
+            question = Question(quest, options, right_answer, diff_lvl, base_points)
+            return_list.append(question)
+        return return_list
+
+    def load_questions(self):
+        n = 5
+        easy_questions = random.sample(self.__getAllQuestions("Question_easy.txt"), n)
+        medium_questions = random.sample(self.__getAllQuestions("Question_medium.txt"), n//2)
+        HOT_questions = random.sample(self.__getAllQuestions("Question_HOT.txt"), n - 3)
+        if n%2 == 0:
+            hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n/2 - 1)
+        else:
+            hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n//2)
+        
+        easy_questions = self.__build_question_objects(easy_questions)
+        medium_questions = self.__build_question_objects(medium_questions)
+        hard_questions = self.__build_question_objects(hard_questions)
+        HOT_questions = self.__build_question_objects(HOT_questions)
+
+        questions = [easy_questions, medium_questions, hard_questions, HOT_questions]
+
+        return questions
+
+
     

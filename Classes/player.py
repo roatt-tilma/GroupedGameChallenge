@@ -4,16 +4,9 @@ class Player:
         self.regno = regno
         self.score = 0
     
-    def add_score(self, points):
+    def add_score(self, base_points, rem_time, diff_lvl):
+        points = base_points + (rem_time*diff_lvl/60)
         self.score += points
-    
-    def get_points(self, base_point, diff_lvl, rem_time):
-        return base_point + (diff_lvl * rem_time)/60
-    
-    def check_answer(self, answer, right_answer):
-        if answer == right_answer:
-            return True
-        return False
 
 
     
