@@ -18,11 +18,10 @@ class Game:
         stack = stacks[diff_lvl-1]
         question = stack.pop()
         answer, time = question.get_answer()
-        print(time)
         if time == "exceed":
             print("time exceeded!!")
         elif question.check_answer(answer.lower()):
-            player.add_score(question.base_point, 60-time, diff_lvl)
+            player.add_score(question.base_point, 61-time, diff_lvl)
             if diff_lvl < 4:
                 diff_lvl += 1
         else:
