@@ -1,8 +1,9 @@
-from Classes.player import Player
+from Classes.player import Player, Game
 from Classes.Information import PlayerInfo, Question, Admin
 
 admin_handle = Admin()
 player_handle = PlayerInfo()
+game_handle = Game()
 
 print("*******************MAIN MENU*****************")
 print("1. Start Quiz")
@@ -15,9 +16,10 @@ if choice == 1:
     regno = player_handle.get_regno()
     player1 = Player(name, regno)  
     
-    questions = admin_handle.load_questions()
+    question_stacks = admin_handle.load_questions()
+    game_handle.start_game(question_stacks, 1, 1, player1, 5)
+    print(player1.name, ", your score is: ", player1.score)
 
-    print(name + ", your score is:", player1.score) 
 elif choice == 2:
     print("Choose difficulty level")
     print("1. Easy\n2. Medium\n3. Hard\n4. HOT")

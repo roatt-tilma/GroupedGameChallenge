@@ -1,4 +1,6 @@
 import random
+import time
+import threading
 
 class PlayerInfo:
     def get_name(self):
@@ -16,13 +18,33 @@ class Question:
         self.diff_lvl = diff_lvl
         self.base_point = base_point
 
+    def __countTick(self):
+        global timer
+        timer = 0
+        global up 
+        up = False
+        while timer < 60 and up == False:
+            timer += 1
+            time.sleep(1)
+        if timer == 60:
+            timer = 'exceed'
+        
+    def start_stopwatch(self):
+        countTick_thread = threading.Thread(target = self.__countTick)
+        countTick_thread.start()
+        return 
+
     def get_answer(self):
         print(self.question, "\n")
         random.shuffle(self.options)
         key_options = {chr(ord("a")+i):self.options[i] for i in range(len(self.options))}
         [print(key + ") ", value) for key,value in key_options.items()]
+        self.start_stopwatch()
         answer = key_options[input().lower()]
-        return answer
+        global up
+        up = True
+        time = timer
+        return answer, time
     
     def check_answer(self, answer):
         if answer == self.right_answer:
@@ -61,13 +83,9 @@ class Admin:
     def load_questions(self):
         n = 5
         easy_questions = random.sample(self.__getAllQuestions("Question_easy.txt"), n)
-        medium_questions = random.sample(self.__getAllQuestions("Question_medium.txt"), n//2)
-        HOT_questions = random.sample(self.__getAllQuestions("Question_HOT.txt"), n - 3)
-        if n%2 == 0:
-            hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n/2 - 1)
-        else:
-            hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n//2)
-        
+        medium_questions = random.sample(self.__getAllQuestions("Question_medium.txt"), n-1)    
+        hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n - 2)
+        HOT_questions = random.sample(self.__getAllQuestions("Question_HOT.txt"), n - 3)        
         easy_questions = self.__build_question_objects(easy_questions)
         medium_questions = self.__build_question_objects(medium_questions)
         hard_questions = self.__build_question_objects(hard_questions)
