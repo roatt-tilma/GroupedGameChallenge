@@ -1,9 +1,6 @@
 from Classes.player import Player, Game
 from Classes.Information import PlayerInfo, Question, Admin
 
-admin_handle = Admin()
-player_handle = PlayerInfo()
-game_handle = Game()
 
 print("*******************MAIN MENU*****************")
 print("1. Start Quiz")
