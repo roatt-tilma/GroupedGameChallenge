@@ -38,7 +38,7 @@ class Question:
         v = IntVar()
         v.set(-1)
         question_label = Label(frame, text = "\n" + self.question + "\n", wraplength = 250, font = "20")
-        timer_label = Label(frame, text = "5", font = "Verdana 80")
+        timer_label = Label(frame, text = "60", font = "Verdana 80")
         random.shuffle(self.options)
         key_options = {i:self.options[i] for i in range(len(self.options))}
         option_widgets = [Radiobutton(frame, text = value, variable = v, value = key, font = "15", command = enable) for key, value in key_options.items()]
