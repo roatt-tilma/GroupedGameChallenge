@@ -1,4 +1,5 @@
 from Classes.Information import Question
+from tkinter import *
 
 class Player:
     def __init__(self, name, regno):
@@ -11,24 +12,26 @@ class Player:
         self.score += points
 
 class Game:
-    def start_game(self, stacks, q_no, diff_lvl, player, number_of_questions):
+    def __init__(self, root):
+        self.root = root
+
+    def launch_game(self, stacks, q_no, diff_lvl, player, number_of_questions):
         if q_no > number_of_questions:
-            print("Maximum questions limit is reached!!")
             return
+        frame = LabelFrame(self.root, text = "Question " + str(q_no), padx = 250, pady = 20)
+        frame.place(x = 700, y = 250)
         stack = stacks[diff_lvl-1]
         question = stack.pop()
-        answer, time = question.get_answer()
-        if time == "exceed":
-            print("time exceeded!!")
-        elif question.check_answer(answer.lower()):
-            player.add_score(question.base_point, 61-time, diff_lvl)
+        answer, rem_time = question.get_answer(frame)
+        frame.destroy()
+        if question.check_answer(answer) and rem_time != 0:
+            player.add_score(question.base_point, rem_time, diff_lvl)
             if diff_lvl < 4:
                 diff_lvl += 1
         else:
             if diff_lvl > 1:
                 diff_lvl -= 1
-        
-        self.start_game(stacks, q_no+1, diff_lvl, player, number_of_questions)
+        self.launch_game(stacks, q_no+1, diff_lvl, player, number_of_questions)
 
 
     

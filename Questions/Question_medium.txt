@@ -1,25 +1,25 @@
 Finance bill of Indian government is presented in - 
-Upper house||Lower house||Middle house||None of these
+Upper house||Lower house||Middle house||None of these||
 Lower house
 2 5
 **||**
 Who appoints the governer of Jammu and Kashmir?
-PM of India||CM of India||President of India||Governer
+PM of India||CM of India||President of India||Governer||
 President of India
 2 5
 **||**
 Which of the following personalities gave the laws of heridity?
-Robert Hook||G.J. Mendel||Charles Darwin||William Harvey
+Robert Hook||G.J. Mendel||Charles Darwin||William Harvey||
 G.J. Mendel
 2 5
 **||**
 World Trade Organization came into existance in the year - 
-1992||1993||1994||1995
+1992||1993||1994||1995||
 1995
 2 5
 **||**
 What is 50% of 20% of 100?
-10||20||50||30
+10||20||50||30||
 10
 2 5
 **||**
