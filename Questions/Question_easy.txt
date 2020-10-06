@@ -24,5 +24,3 @@ How many consonants are there in English alphabets?
 1 3
 **||**
 
-blll
-asdf||

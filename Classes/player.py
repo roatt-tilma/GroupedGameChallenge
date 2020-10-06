@@ -1,6 +1,9 @@
+#importing Question from another python file in same directory
+#importing tkinter
 from Classes.Information import Question
 from tkinter import *
 
+#defining Player Class
 class Player:
     def __init__(self, name, regno):
         self.name = name
@@ -9,8 +12,9 @@ class Player:
     
     def add_score(self, base_points, rem_time, diff_lvl):
         points = base_points + (rem_time*diff_lvl/60)
-        self.score += points
+        self.score += round(points, 3)
 
+#defining Game Class to handle the main quiz game
 class Game:
     def __init__(self, root):
         self.root = root
@@ -20,7 +24,7 @@ class Game:
             return
         frame = LabelFrame(self.root, text = "Question " + str(q_no), padx = 250, pady = 20)
         frame.place(x = 700, y = 250)
-        stack = stacks[diff_lvl-1]
+        stack = stacks[diff_lvl-1] #stacks is list containing question objects
         question = stack.pop()
         answer, rem_time = question.get_answer(frame)
         frame.destroy()
