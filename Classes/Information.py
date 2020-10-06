@@ -163,11 +163,11 @@ class Admin:
         return return_list
 
     def load_questions(self):
-        n = 5 #number of questions to be asked
+        n = 10 #number of questions to be asked
         #randomly picking certain number of questions from each file
         easy_questions = random.sample(self.__getAllQuestions("Question_easy.txt"), n)
-        medium_questions = random.sample(self.__getAllQuestions("Question_medium.txt"), n - 1)    
-        hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n - 2)
+        medium_questions = random.sample(self.__getAllQuestions("Question_medium.txt"), n//2)    
+        hard_questions = random.sample(self.__getAllQuestions("Question_hard.txt"), n//2)
         HOT_questions = random.sample(self.__getAllQuestions("Question_HOT.txt"), n - 3)        
         #building question objects
         easy_questions = self.__build_question_objects(easy_questions)
