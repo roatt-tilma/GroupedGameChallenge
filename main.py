@@ -32,7 +32,7 @@ def get_info(): #to get the information of the player
 
 def start_game(): #to start the game
     question_stacks = admin_handle.load_questions() #getting the questions
-    game_handle.launch_game(question_stacks, 1, 1, player, 5) #starting the game
+    game_handle.launch_game(question_stacks, 1, 1, player, 10) #starting the game
     resultFrame = LabelFrame(root, text = "Result", padx = 250, pady = 250)
     result = Label(resultFrame, text = player.name + ", your score is: " + str(player.score), fg = "green", font = 80, pady = 20)
     resultFrame.place(x = 700, y = 250)
