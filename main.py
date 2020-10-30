@@ -30,13 +30,29 @@ def get_info(): #to get the information of the player
     back_button = Button(info, text = "Back", width = 10, height = 2,  activebackground = "red", command = lambda: back(info)).grid(row = 2, column = 0, sticky = "nsew")
     s = Button(info, text = "SUBMIT", width = 10, height = 2,  activebackground = "blue", command = lambda: submit(name.get(), regno.get(), info)).grid(row = 2, column = 1, sticky = "nsew")
 
+def update_highscore():
+    f = open("Highscore.txt", "r")
+    det = f.read().splitlines()
+    f.close()
+    if float(det[1]) <= player.score:
+        f = open("Highscore.txt", "w")
+        f.write(player.name + "\n" + str(player.score))
+        f.close()
+    f = open("Highscore.txt", "r")
+    det = f.read().splitlines()
+    f.close()
+    return det[1]
+
 def start_game(): #to start the game
     question_stacks = admin_handle.load_questions() #getting the questions
     game_handle.launch_game(question_stacks, 1, 1, player, 10) #starting the game
+    hs = update_highscore()
     resultFrame = LabelFrame(root, text = "Result", padx = 250, pady = 250)
     result = Label(resultFrame, text = player.name + ", your score is: " + str(player.score), fg = "green", font = 80, pady = 20)
+    HS = Label(resultFrame, text = "High Score: " + hs, fg = "blue", font = 80, pady = 20)
     resultFrame.place(x = 700, y = 250)
     result.pack() #displaying the result
+    HS.pack()
     back_button = Button(resultFrame, text = "Back", width = 10, height = 2,  activebackground = "blue", command = lambda: back(resultFrame)).pack()
 
 def check_passcode(passcode, info): #to check the passcode to add questions

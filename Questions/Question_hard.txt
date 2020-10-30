@@ -66,13 +66,9 @@ Average of first 50 natural numbers is __________
 Which literary character has been portrayed by Peter Cushing, Robert Stephens and Ian McKellen?
 Dracula||Dr. Frankenstein||Sherlock Holmes||
 Sherlock Holmes
-4 10
+3 7 
 **||**
-
-Tanya is older than Eric. 
-Cliff is older than Tanya. 
-Eric is older than Cliff.
- If the first two statements are true, the third statement is ____________
+Tanya is older than Eric.Cliff is older than Tanya.Eric is older than Cliff.If the first two statements are true, the third statement is ____________
 True||False||Uncertain||
 False
 3 7
