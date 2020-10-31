@@ -80,7 +80,7 @@ def get_passcode(): #to get the passcode to add the question
     
 def create_homepage(): #to create the homepage
     global frame
-    frame = LabelFrame(root, text = "Who's the Boss? - GGC", padx = 250, pady = 250)
+    frame = LabelFrame(root, text = "QuizBox Gameplay", padx = 250, pady = 250)
     frame.place(x = 700, y = 250)
 
     start_G = Button(frame, text = "Start Game", width = 20, height = 3, activebackground = "blue", command = get_info).grid(pady = 10)
@@ -167,7 +167,7 @@ if __name__ == "__main__":
     global root
     root = Tk()
     root.attributes('-fullscreen', True)
-    root.title("Who's the Boss? - Grouped Game Challenge")
+    root.title("Quiz Box")
     root.iconbitmap('icon.ico')
     global game_handle
     game_handle = Game(root)
